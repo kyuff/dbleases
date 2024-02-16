@@ -16,7 +16,7 @@ partition values that can be used to only handle the work assigned to your parti
 
 ### Which database and drivers is supported?
 
-Postgres is supported. The code is tested with [pgx](https://github.com/jackc/pgx, but is assumed to work
+Postgres is supported. The code is tested with [pgx](https://github.com/jackc/pgx), but is assumed to work
 with [lib/pg](https://github.com/lib/pq) as well.
 
 ### What happens if a client is removed forcefully?
