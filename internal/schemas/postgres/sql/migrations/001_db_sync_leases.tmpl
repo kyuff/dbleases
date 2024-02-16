@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS {{ .Schema }}.{{ .Prefix }}_leases
+(
+    lease_name      varchar     NOT NULL, -- lease name
+    client_id       varchar     NOT NULL, -- name of the lease owner
+    ttl             timestamptz NOT NULL, -- time from which the lease is invalid
+    status          varchar     NOT NULL, -- indicates if the lease is applied
+    value           int         NOT NULL, -- number that is leased
+    PRIMARY KEY (lease_name, value)
+);
+

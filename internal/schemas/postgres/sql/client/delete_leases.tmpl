@@ -1,0 +1,4 @@
+DELETE FROM
+    {{ .Schema }}.{{ .Prefix }}_leases
+WHERE
+    client_id = $1;

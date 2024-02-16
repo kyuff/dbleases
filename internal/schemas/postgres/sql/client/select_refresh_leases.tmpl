@@ -1,0 +1,20 @@
+WITH
+    evacuate AS (
+        DELETE FROM {{ .Schema }}.{{ .Prefix }}_leases
+        WHERE ttl < NOW()
+    ),
+    refresh AS (
+        UPDATE {{ .Schema }}.{{ .Prefix }}_leases
+        SET ttl = NOW() + $3::interval
+        WHERE client_id = $2
+            AND lease_name = ANY($1::varchar[])
+        )
+SELECT
+    lease_name,
+    client_id,
+    ttl,
+    status,
+    value
+FROM {{ .Schema }}.{{ .Prefix }}_leases
+WHERE lease_name = ANY($1::varchar[])
+ORDER by lease_name, value;

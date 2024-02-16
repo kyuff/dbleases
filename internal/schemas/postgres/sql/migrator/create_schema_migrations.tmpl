@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS {{ .Schema }}.{{ .Prefix }}_migrations
+(
+    version     BIGINT                      NOT NULL,
+    file_name   VARCHAR                     NOT NULL,
+    file_hash   VARCHAR                     NOT NULL,
+    applied     timestamptz DEFAULT NOW()   NOT NULL,
+    CONSTRAINT {{ .Prefix }}_migrations_pkey PRIMARY KEY (version)
+);

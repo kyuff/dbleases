@@ -1,0 +1,5 @@
+UPDATE {{ .Schema }}.{{ .Prefix }}_leases
+    SET status = $4
+WHERE client_id = $1
+   AND lease_name = $2
+   AND value = $3;

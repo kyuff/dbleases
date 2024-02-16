@@ -1,0 +1,8 @@
+INSERT INTO {{ .Schema }}.{{ .Prefix }}_leases (
+        lease_name,
+        client_id,
+        ttl,
+        status,
+        value)
+VALUES ($1, $2, NOW() + $3::interval, $4, $5)
+ON CONFLICT (lease_name, value) DO NOTHING;

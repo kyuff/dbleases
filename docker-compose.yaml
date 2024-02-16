@@ -1,0 +1,10 @@
+version: '3'
+services:
+  leasedb:
+    image: postgres:15.4-alpine
+    container_name: leasedb
+    ports:
+      - "5430:5432"
+    environment:
+      POSTGRES_USER: lease
+      POSTGRES_PASSWORD: lease
